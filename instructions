@@ -1,0 +1,14 @@
+1. Upon flashing, you are going to want to install 2 nvidia packages. This can be done using sudo apt-get install nvidia-cuda and sudo apt-get install nvidia-cudnn8.
+2. Then you are going to want to clone this github repo: https://github.com/mm5631/live_object_detection/tree/master
+3. Then you are going to want to get the necessary dockerfile: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-tensorflow. The one I used was: l4t-tensorflow:r32.7.1-tf2.7-py3
+4. Then you are going to want to run this command: export DISPLAY=:1
+5. Then type: xhost +
+6. Then run the temp.py file that I have added in this repository
+7. Then once inside the docker container, you are going to want to run: export DISPLAY=:1
+8. Then you are going to run: python3 -m pip install --upgrade pip
+9. Then you run: python3 -m pip install opencv-python==4.5.3.56
+10. Then you are probably going to have to install some more packages (idk)
+11. Then you are going to go back into the live_object_detection file, and change the file paths so that it's ../assets instead of /assets and add a time.sleep(15) before camera activates.
+11. Then you are going to want to run the following command to get the docker container id: sudo docker ps
+12. Then you are going to do: sudo docker cp live_object_detection/ {container id}:/live_object_detection/
+13. Then cd into the live_object_detection/src/ file and run python3 detect.py
